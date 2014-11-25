@@ -16,5 +16,13 @@ app.get('/index',function(req, res){
    res.render('index',{ message:'you are the best'});
 });
 
+app.get('/register',function(req, res){
+   res.render('register',{ message:'you are mine'});
+});
+
+app.get('/edit',function(req, res){
+    res.render('edit',{ message:'you are yourself'});
+});
+
 // 最后，必须有这行代码来使 express 响应 HTTP 请求
 app.listen();
