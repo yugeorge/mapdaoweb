@@ -7,9 +7,9 @@ app.set('views','cloud/views');   // 设置模板目录
 app.set('view engine', 'ejs');    // 设置 template 引擎
 app.use(express.bodyParser());    // 读取请求 body 的中间件
 
-app.use(express.cookieParser('Your Cookie Secure'));
+//app.use(express.cookieParser('Your Cookie Secure'));
 //使用avos-express-cookie-session记录登录信息到cookie。
-app.use(avosExpressCookieSession({ cookie: { maxAge: 3600000 }}));
+//app.use(avosExpressCookieSession({ cookie: { maxAge: 3600000 }}));
 
 // 使用 Express 路由 API 服务 /hello 的 HTTP GET 请求
 app.get('/hello', function(req, res) {
