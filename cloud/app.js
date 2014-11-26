@@ -32,13 +32,17 @@ app.post('/index', function(req, res) {
     AV.User.logIn(req.body.username, req.body.password).then(function() {
       //登录成功，avosExpressCookieSession会自动将登录用户信息存储到cookie
       //跳转到profile页面。
-      console.log('signin successfully: %j', AV.User.current());
+      alert('signin successfully: %j', AV.User.current());
       res.redirect('/edit');
     },function(error) {
       //登录失败，跳转到登录页面
       res.redirect('/index');
   });
 });
+
+//app.post('/register', function(req, res){
+  //   AV.User.signUp(
+//)
 
 
 
