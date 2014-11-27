@@ -32,11 +32,12 @@ app.post('/', function(req, res) {
     AV.User.logIn(req.body.username, req.body.password).then(function() {
       //登录成功，avosExpressCookieSession会自动将登录用户信息存储到cookie
       //跳转到profile页面。
-      console.log('signin successfully: %j', AV.User.current());
+      message：'登录成功';
+	  console.log('signin successfully: %j', AV.User.current());
       res.redirect('/edit');
     },function(error) {
       //登录失败，跳转到登录页面
-      res.send('登录失败');
+      message:'用户名和密码不匹配，请重新登录';
 	  res.redirect('/');
 	  
   });
