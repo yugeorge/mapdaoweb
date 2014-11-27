@@ -7,6 +7,8 @@
 <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen"> -->
 </head>
 <body>
+<button type="submit" class="btn btn-primary">确定</button>
+
 <div class="container-fluid">
 <form class="form-horizontal" method="post">
 <fieldset>
@@ -19,20 +21,22 @@
 </div>
 <div class="control-group">
     <label class="control-label" for="exampleInputFileA">照片上传A</label>
-	
+	<p>
     <input type="file" id="exampleInputFile">
-	
+	</p>
     <p class="help-block">上传.jpg文件</p>
   </div>
   
 <div class="control-group">
     <label class="control-label" for="exampleInputFileB">照片上传B</label>
-    <input type="file" id="exampleInputFile">
-    <p class="help-block">上传.avi文件</p>
+    <p>
+	<input type="file" id="exampleInputFile">
+	</p>
+    <p class="control-label">上传.avi文件</p>
   </div>  
 <div class="control-group">
 <label class="control-label" for="introduction">点介绍</label>
-<textarea class="control-group" rows="5"></textarea>
+<textarea class="control-group" rows="8" cols="70"></textarea>
 </div>
 
 
@@ -61,7 +65,7 @@
 
 <div class="form-actions">
 <button type="submit" class="btn btn-primary">确定</button>
-<button type="reset" class="btn btn_primary">取消</button>
+<button type="reset" class="btn btn-default">取消</button>
 </div>
 </fieldset>
 </form>
