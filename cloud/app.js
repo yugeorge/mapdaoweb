@@ -26,9 +26,9 @@ app.get('/register',function(req, res){
 
 app.post('/register',function(req, res){
    var user=new AV.User();
-   user.set("username",res.body.username);
-   user.set("password",res.body.password);
-   user.set("email", res.body.usermail);
+   user.set("username",req.body.username);
+   user.set("password",req.body.password);
+   user.set("email", req.body.usermail);
    user.signUp(null, {
   success: function(user) {
     res.redirect('/');
