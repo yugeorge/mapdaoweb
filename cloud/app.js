@@ -35,9 +35,9 @@ app.post('/register',function(req, res){
   },
   error: function(user, error) {
     // Show the error message somewhere and let the user try again.
-    res.render('register',{ message:error.message);
+    res.render('register',{ message:error.message});
 	
-  }
+  
 });
 
 });
