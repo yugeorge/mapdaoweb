@@ -17,11 +17,29 @@ app.get('/hello', function(req, res) {
 });
 
 app.get('/',function(req, res){
-   res.render('index',{ message:'you are the best'});
+   res.render('index',{ message:''});
 });
 
 app.get('/register',function(req, res){
-   res.render('register',{ message:'you are mine'});
+   res.render('register',{ message:''});
+});
+
+app.post('/register',function(req, res){
+   var user=new AV.User();
+   user.set("username",res.body.username);
+   user.set("password",res.body.password);
+   user.set("email", res.body.usermail);
+   user.signUp(null, {
+  success: function(user) {
+    res.redirect('/');
+  },
+  error: function(user, error) {
+    // Show the error message somewhere and let the user try again.
+    res.render('register',{ message:error.message);
+	
+  }
+});
+
 });
 
 app.get('/edit',function(req, res){
