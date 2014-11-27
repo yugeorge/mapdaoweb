@@ -38,7 +38,9 @@ app.post('/register',function(req, res){
     res.render('register',{ message:error.message});
 	
   
-});
+}}
+
+);
 
 });
 
