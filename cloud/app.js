@@ -36,7 +36,9 @@ app.post('/', function(req, res) {
       res.redirect('/edit');
     },function(error) {
       //登录失败，跳转到登录页面
-      res.redirect('/');
+      res.send('登录失败');
+	  res.redirect('/');
+	  
   });
 });
 
