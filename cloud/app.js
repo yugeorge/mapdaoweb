@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 
+
 // App 全局配置
 app.set('views','cloud/views');   // 设置模板目录
 app.set('view engine', 'ejs');    // 设置 template 引擎
@@ -42,7 +43,7 @@ app.post('/register',function(req, res){
 });
 
 app.get('/edit',function(req, res){
-    res.render('edit',{ message:'you are yourself'});
+    res.render('edit',{ message:''});
 });
 
 app.post('/', function(req, res) {
@@ -61,6 +62,25 @@ app.post('/', function(req, res) {
 
 app.post('/edit',function(req,res){
  var iconFile = req.files.example;
+ var Point = AV.Object.extend("UserPoint");
+ var point = new Point();
+ point.set("name",req.body.pointname);
+ point.set("introduction", req.body.introduction);
+ 
+ point.save(null, {
+  success: function(point) {
+    // Execute any logic that should take place after the object is saved.
+    res.send('New object created with objectId: ' + point.id);
+  },
+  error: function(point, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a AV.Error with an error code and description.
+    res.send('Failed to create new object, with error code: ' + error.description);
+  });
+ 
+ //point.set("cheatMode", false);
+ 
+ //var iconFileA =req.files.exampleB;
   if(iconFile){
     fs.readFile(iconFile.path, function(err, data){
       if(err)
