@@ -70,7 +70,7 @@ app.post('/edit',function(req,res){
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
-    res.send('New object created with objectId: ' + point.id);
+    res.send('New object created with objectId: ' + point.name);
   },
   error: function(point, error) {
     // Execute any logic that should take place if the save fails.
