@@ -76,7 +76,7 @@ app.post('/edit',function(req,res){
     // Execute any logic that should take place if the save fails.
     // error is a AV.Error with an error code and description.
     res.send('Failed to create new object, with error code: ' + error.description);
-  });
+  }});
  
  //point.set("cheatMode", false);
  
