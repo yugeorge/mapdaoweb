@@ -62,10 +62,16 @@ app.post('/', function(req, res) {
 
 app.post('/edit',function(req,res){
  var iconFile = req.files.example;
+ var File_b=req.files.exampleB;
+ var File_c=req.files.exampleC;
+ var File_d=req.files.exampleD;
+ var File_e=req.files.exampleE;
  var Point = AV.Object.extend("UserPoint");
  var point = new Point();
  point.set("name",req.body.pointname);
  point.set("introduction", req.body.introduction);
+ point.set("routename",req.body.routename);
+ point.set("routenum",req.body.routenumber);
  
  point.save(null, {
   success: function(point) {
@@ -88,6 +94,32 @@ app.post('/edit',function(req,res){
       var base64Data = data.toString('base64');
       var theFile = new AV.File(iconFile.name, {base64: base64Data});
       theFile.save().then(function(theFile){
+        res.send("上传成功！");
+      });
+    });
+  }else
+    res.send("请选择一个文件。");
+	
+  if(File_b){
+    fs.readFile(File_b.path, function(err, data){
+      if(err)
+        return res.send("读取文件失败");
+      var base64Data = data.toString('base64');
+      var theFileb = new AV.File(File_b.name, {base64: base64Data});
+      theFileb.save().then(function(theFileb){
+        res.send("上传成功！");
+      });
+    });
+  }else
+    res.send("请选择一个文件。");	
+	
+	  if(File_c){
+    fs.readFile(File_c.path, function(err, data){
+      if(err)
+        return res.send("读取文件失败");
+      var base64Data = data.toString('base64');
+      var theFilec = new AV.File(File_c.name, {base64: base64Data});
+      theFilec.save().then(function(theFilec){
         res.send("上传成功！");
       });
     });
