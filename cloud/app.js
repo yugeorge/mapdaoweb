@@ -5,6 +5,8 @@ var fs = require('fs');
 var Point = AV.Object.extend("UserPoint");
 var point = new Point();
 
+
+
 // App 全局配置
 app.set('views','cloud/views');   // 设置模板目录
 app.set('view engine', 'ejs');    // 设置 template 引擎
@@ -68,7 +70,7 @@ app.post('/edit',function(req,res){
  var File_d=req.files.exampleD;
  var File_e=req.files.exampleE;
  
- var file = new AV.File('test.txt', new Buffer('hello world'));;
+ //var file = new AV.File('test.txt', new Buffer('hello world'));;
  
  point.set("name",req.body.pointname);
  point.set("Introduction", req.body.introduction);
@@ -88,8 +90,9 @@ app.post('/edit',function(req,res){
 	  
       theFile.save().then(function(theFile){
         console.log("上传成功！");
+		point.set("Graphic",theFile);
       });
-	  point.set("Graphic",theFile);
+	 
 	 // point.set("check","1234");
 	  
     });
