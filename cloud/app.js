@@ -120,6 +120,7 @@ app.post('/edit',function(req,res){
     });
   }else
     res.send("请选择一个文件。");
+ file.save();
  point.set("Graphic",file);
  point.save(null, {
   success: function(point) {
