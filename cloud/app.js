@@ -67,12 +67,13 @@ app.post('/edit',function(req,res){
  var File_d=req.files.exampleD;
  var File_e=req.files.exampleE;
  var Point = AV.Object.extend("UserPoint");
- var theFile;
+ var file = new AV.File('test.txt', new Buffer('hello world'));;
  var point = new Point();
  point.set("name",req.body.pointname);
  point.set("Introduction", req.body.introduction);
  point.set("routename",req.body.routename);
  point.set("routenum",req.body.routenumber);
+ 
  //point.set("Creator",AV.User.current());
  
 
@@ -119,7 +120,7 @@ app.post('/edit',function(req,res){
     });
   }else
     res.send("请选择一个文件。");
- point.set("Graphic",theFile);
+ point.set("Graphic",file);
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
