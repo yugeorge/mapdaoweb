@@ -73,7 +73,7 @@ app.post('/edit',function(req,res){
  point.set("Introduction", req.body.introduction);
  point.set("routename",req.body.routename);
  point.set("routenum",req.body.routenumber);
- point.set("Creator",AV.User.current());
+ //point.set("Creator",AV.User.current());
  
 
 
@@ -87,7 +87,7 @@ app.post('/edit',function(req,res){
       theFile.save().then(function(theFile){
         console.log("上传成功！");
       });
-	  point.set("check","1234");
+	 // point.set("check","1234");
 	  
     });
   }else
@@ -119,7 +119,7 @@ app.post('/edit',function(req,res){
     });
   }else
     res.send("请选择一个文件。");
- 
+ point.set("Graphic",theFile);
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
