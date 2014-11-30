@@ -67,6 +67,7 @@ app.post('/edit',function(req,res){
  var File_d=req.files.exampleD;
  var File_e=req.files.exampleE;
  var Point = AV.Object.extend("UserPoint");
+ var theFile;
  var point = new Point();
  point.set("name",req.body.pointname);
  point.set("introduction", req.body.introduction);
@@ -83,7 +84,7 @@ app.post('/edit',function(req,res){
       if(err)
         return res.send("读取文件失败");
       var base64Data = data.toString('base64');
-      var theFile = new AV.File(iconFile.name, {base64: base64Data});
+      theFile = new AV.File(iconFile.name, {base64: base64Data});
       theFile.save().then(function(theFile){
         res.send("上传成功！");
       });
@@ -118,11 +119,11 @@ app.post('/edit',function(req,res){
     });
   }else
     res.send("请选择一个文件。");
-
+ point.set("GraphicA",theFile);
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
-    res.send('New object created with objectId: ' + point.name);
+    res.send('New object created with objectId: ' + point.id);
   },
   error: function(point, error) {
     // Execute any logic that should take place if the save fails.
