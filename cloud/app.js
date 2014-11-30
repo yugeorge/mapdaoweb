@@ -73,16 +73,7 @@ app.post('/edit',function(req,res){
  point.set("routename",req.body.routename);
  point.set("routenum",req.body.routenumber);
  
- point.save(null, {
-  success: function(point) {
-    // Execute any logic that should take place after the object is saved.
-    res.send('New object created with objectId: ' + point.name);
-  },
-  error: function(point, error) {
-    // Execute any logic that should take place if the save fails.
-    // error is a AV.Error with an error code and description.
-    res.send('Failed to create new object, with error code: ' + error.description);
-  }});
+
  
  //point.set("cheatMode", false);
  
@@ -96,10 +87,12 @@ app.post('/edit',function(req,res){
       theFile.save().then(function(theFile){
         res.send("上传成功！");
       });
+	  point.set("GraphicA",theFile);
     });
   }else
     res.send("请选择一个文件。");
 	
+		
   if(File_b){
     fs.readFile(File_b.path, function(err, data){
       if(err)
@@ -126,7 +119,16 @@ app.post('/edit',function(req,res){
   }else
     res.send("请选择一个文件。");
 
-
+ point.save(null, {
+  success: function(point) {
+    // Execute any logic that should take place after the object is saved.
+    res.send('New object created with objectId: ' + point.name);
+  },
+  error: function(point, error) {
+    // Execute any logic that should take place if the save fails.
+    // error is a AV.Error with an error code and description.
+    res.send('Failed to create new object, with error code: ' + error.description);
+  }});
 
 
 });
