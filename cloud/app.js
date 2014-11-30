@@ -73,12 +73,10 @@ app.post('/edit',function(req,res){
  point.set("Introduction", req.body.introduction);
  point.set("routename",req.body.routename);
  point.set("routenum",req.body.routenumber);
+ point.set("Creator",AV.User.current());
  
 
- 
- //point.set("cheatMode", false);
- 
- //var iconFileA =req.files.exampleB;
+
   if(iconFile){
     fs.readFile(iconFile.path, function(err, data){
       if(err)
@@ -87,9 +85,10 @@ app.post('/edit',function(req,res){
       theFile = new AV.File(iconFile.name, {base64: base64Data});
 	  
       theFile.save().then(function(theFile){
-        res.send("上传成功！");
+        console.log("上传成功！");
       });
-	   point.set("graphicA",theFile);
+	  point.set("check","1234");
+	  
     });
   }else
     res.send("请选择一个文件。");
