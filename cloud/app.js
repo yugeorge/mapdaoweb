@@ -70,7 +70,7 @@ app.post('/edit',function(req,res){
  var theFile;
  var point = new Point();
  point.set("name",req.body.pointname);
- point.set("introduction", req.body.introduction);
+ point.set("Introduction", req.body.introduction);
  point.set("routename",req.body.routename);
  point.set("routenum",req.body.routenumber);
  
@@ -85,10 +85,11 @@ app.post('/edit',function(req,res){
         return res.send("读取文件失败");
       var base64Data = data.toString('base64');
       theFile = new AV.File(iconFile.name, {base64: base64Data});
+	  
       theFile.save().then(function(theFile){
         res.send("上传成功！");
       });
-	  point.set("GraphicA",theFile);
+	   point.set("graphicA",theFile);
     });
   }else
     res.send("请选择一个文件。");
@@ -119,7 +120,7 @@ app.post('/edit',function(req,res){
     });
   }else
     res.send("请选择一个文件。");
- point.set("GraphicA",theFile);
+ 
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
