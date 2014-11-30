@@ -2,6 +2,7 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
+var Point = AV.Object.extend("UserPoint");
 var point = new Point();
 
 // App 全局配置
@@ -66,7 +67,7 @@ app.post('/edit',function(req,res){
  var File_c=req.files.exampleC;
  var File_d=req.files.exampleD;
  var File_e=req.files.exampleE;
- var Point = AV.Object.extend("UserPoint");
+ 
  var file = new AV.File('test.txt', new Buffer('hello world'));;
  
  point.set("name",req.body.pointname);
