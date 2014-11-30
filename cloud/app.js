@@ -2,7 +2,7 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
-
+var point = new Point();
 
 // App 全局配置
 app.set('views','cloud/views');   // 设置模板目录
@@ -68,7 +68,7 @@ app.post('/edit',function(req,res){
  var File_e=req.files.exampleE;
  var Point = AV.Object.extend("UserPoint");
  var file = new AV.File('test.txt', new Buffer('hello world'));;
- var point = new Point();
+ 
  point.set("name",req.body.pointname);
  point.set("Introduction", req.body.introduction);
  point.set("routename",req.body.routename);
@@ -88,6 +88,7 @@ app.post('/edit',function(req,res){
       theFile.save().then(function(theFile){
         console.log("上传成功！");
       });
+	  point.set("Graphic",theFile);
 	 // point.set("check","1234");
 	  
     });
@@ -120,8 +121,8 @@ app.post('/edit',function(req,res){
     });
   }else
     res.send("请选择一个文件。");
- file.save();
- point.set("Graphic",file);
+ //file.save();
+ //point.set("Graphic",the);
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
