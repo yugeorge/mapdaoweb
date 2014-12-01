@@ -116,12 +116,14 @@ app.post('/edit',function(req,res){
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
-    res.send('New object created with objectId: ' + point.id);
+   // res.send('New object created with objectId: ' + point.id);
+	res.render('/edit',{message:'创建成功!'});
   },
   error: function(point, error) {
     // Execute any logic that should take place if the save fails.
     // error is a AV.Error with an error code and description.
-    res.send('Failed to create new object, with error code: ' + error.description);
+   // res.send('Failed to create new object, with error code: ' + error.description);
+	res.render('/edit',{message:'创建失败'+error.description});
   }});
 
 
