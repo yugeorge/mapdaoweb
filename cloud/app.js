@@ -74,14 +74,15 @@ app.post('/edit',function(req,res){
  var File_c = req.files.exampleC;
  var File_d = req.files.exampleD;
  var File_e = req.files.exampleE;
- 
+ var usr;
+ usr=AV.User.current();
  //var file = new AV.File('test.txt', new Buffer('hello world'));;
  
  point.set("name",req.body.pointname);
  point.set("Introduction", req.body.introduction);
  point.set("routename",req.body.routename);
  point.set("routenum",req.body.routenumber);
- 
+ point.set("Editor",usr);
  //point.set("Creator",AV.User.current());
  
 
