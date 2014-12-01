@@ -111,7 +111,7 @@ app.post('/edit',function(req,res){
       var base64Data = data.toString('base64');
       theFileb = new AV.File(File_b.name, {base64: base64Data});
       theFileb.save().then(function(theFileb){
-        res.send("上传成功！");
+        //res.send("上传成功！");
       });
     });
   }else
@@ -124,7 +124,7 @@ app.post('/edit',function(req,res){
       var base64Data = data.toString('base64');
       theFilec = new AV.File(File_c.name, {base64: base64Data});
       theFilec.save().then(function(theFilec){
-        res.send("上传成功！");
+       // res.send("上传成功！");
       });
     });
   }else
@@ -137,7 +137,7 @@ app.post('/edit',function(req,res){
       var base64Data = data.toString('base64');
       theFiled = new AV.File(File_d.name, {base64: base64Data});
       theFiled.save().then(function(theFiled){
-        res.send("上传成功！");
+       // res.send("上传成功！");
       });
     });
   }else
@@ -149,8 +149,8 @@ app.post('/edit',function(req,res){
         return res.send("读取文件失败");
       var base64Data = data.toString('base64');
       theFilee = new AV.File(File_e.name, {base64: base64Data});
-      theFilee.save().then(function(theFiled){
-        res.send("上传成功！");
+      theFilee.save().then(function(theFilee){
+       // res.send("上传成功！");
       });
     });
   }else
