@@ -101,7 +101,7 @@ app.post('/edit',function(req,res){
     });
   }else
     res.send("请选择一个文件。");
-	
+	point.set("GraphicA",theFile);
 	 	
   if(File_b){
     fs.readFile(File_b.path, function(err, data){
@@ -115,7 +115,7 @@ app.post('/edit',function(req,res){
     });
   }else
     res.send("请选择一个文件。");	
-	
+	point.set("GraphicB",theFileb);
 	  if(File_c){
     fs.readFile(File_c.path, function(err, data){
       if(err)
@@ -156,8 +156,8 @@ app.post('/edit',function(req,res){
     res.send("请选择一个文件。");
  //file.save();
  //point.set("Graphic",theFile);
- point.set("GraphicA",theFile);
- point.set("GraphicB",theFileb);
+ 
+ 
  point.set("GraphicC",theFilec);
  point.set("GraphicD",theFiled);
  point.set("GraphicE",theFilee);
