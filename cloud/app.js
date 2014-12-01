@@ -4,6 +4,7 @@ var app = express();
 var fs = require('fs');
 var Point = AV.Object.extend("UserPoint");
 var point = new Point();
+var theFile;
 
 
 
@@ -89,7 +90,7 @@ app.post('/edit',function(req,res){
       theFile = new AV.File(iconFile.name, {base64: base64Data});
 	  
       theFile.save();
-	  point.set("Graphic",theFile);
+	 
 	 
 	 // point.set("check","1234");
 	  
@@ -97,7 +98,7 @@ app.post('/edit',function(req,res){
   }else
     res.send("请选择一个文件。");
 	
-		
+	 point.set("Graphic",theFile);	
   if(File_b){
     fs.readFile(File_b.path, function(err, data){
       if(err)
