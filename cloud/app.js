@@ -48,9 +48,7 @@ app.get('/edit',function(req, res){
     res.render('edit',{ message:''});
 });
 
-app.post('/success',function(req, res){
-    res.render('edit',{ message:''});
-});
+
 
 app.post('/', function(req, res) {
     AV.User.logIn(req.body.username, req.body.password).then(function() {
@@ -123,7 +121,7 @@ app.post('/edit',function(req,res){
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
       // res.send('创建成功!' + point.id);
-	res.render('success',{message:'创建成功!'});
+	res.render('edit',{message:'创建成功!'});
   },
   error: function(point, error) {
     // Execute any logic that should take place if the save fails.
