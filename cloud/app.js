@@ -88,10 +88,8 @@ app.post('/edit',function(req,res){
       var base64Data = data.toString('base64');
       theFile = new AV.File(iconFile.name, {base64: base64Data});
 	  
-      theFile.save().then(function(theFile){
-        console.log("上传成功！");
-		point.set("Graphic",theFile);
-      });
+      theFile.save();
+	  point.set("Graphic",theFile);
 	 
 	 // point.set("check","1234");
 	  
@@ -126,7 +124,7 @@ app.post('/edit',function(req,res){
   }else
     res.send("请选择一个文件。");
  //file.save();
- //point.set("Graphic",the);
+ //point.set("Graphic",theFile);
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
