@@ -81,80 +81,38 @@ app.post('/edit',function(req,res){
  point.set("Editor",usr);
 
  var data=fs.readFileSync(File_a.path);
- 
- //fs.readFile(File_a.path, function(err, data){
-      //if(err)
-      //  return res.send("读取文件失败");
-      var base64Data = data.toString('base64');
-      var theFile = new AV.File(File_a.name, {base64: base64Data});
+ var base64Data = data.toString('base64');
+ var theFile = new AV.File(File_a.name, {base64: base64Data});
 	  theFile.save();
-	 
-	 
-	 
-	
-	  
-    
-  
 	point.set("GraphicA",theFile);
+	
+ var data_b=fs.readFileSync(File_b.path);
+ var base64Data_b = data_b.toString('base64');
+ var theFile_b = new AV.File(File_b.name, {base64: base64Data});
+	  theFile_b.save();
+	point.set("GraphicB",theFile_b);
+
+ var data_c=fs.readFileSync(File_c.path);
+ var base64Data_c = data_c.toString('base64');
+ var theFile_c = new AV.File(File_c.name, {base64: base64Data});
+	  theFile_c.save();
+	point.set("GraphicC",theFile_c);
+	
+ var data_d=fs.readFileSync(File_d.path);
+ var base64Data_d = data_d.toString('base64');
+ var theFile_d = new AV.File(File_d.name, {base64: base64Data});
+	  theFile_d.save();
+	point.set("GraphicD",theFile_d);
+
+ var data_e=fs.readFileSync(File_e.path);
+ var base64Data_e = data_e.toString('base64');
+ var theFile_e = new AV.File(File_e.name, {base64: base64Data});
+	  theFile_e.save();
+	point.set("GraphicE",theFile_e);	
+	
 	 	
-  if(File_b){
-    fs.readFile(File_b.path, function(err, data){
-      if(err)
-        return res.send("读取文件失败");
-      var base64Data = data.toString('base64');
-      theFileb = new AV.File(File_b.name, {base64: base64Data});
-      theFileb.save().then(function(theFileb){
-        //res.send("上传成功！");
-      });
-    });
-  }else
-    res.send("请选择一个文件。");	
-	//point.set("GraphicB",theFileb);
-	  if(File_c){
-    fs.readFile(File_c.path, function(err, data){
-      if(err)
-        return res.send("读取文件失败");
-      var base64Data = data.toString('base64');
-      theFilec = new AV.File(File_c.name, {base64: base64Data});
-      theFilec.save().then(function(theFilec){
-      
-      });
-    });
-  }else
-    res.send("请选择一个文件。");
-	
-	  if(File_d){
-    fs.readFile(File_d.path, function(err, data){
-      if(err)
-        return res.send("读取文件失败");
-      var base64Data = data.toString('base64');
-      theFiled = new AV.File(File_d.name, {base64: base64Data});
-      theFiled.save().then(function(theFiled){
-       // res.send("上传成功！");
-      });
-    });
-  }else
-    res.send("请选择一个文件。");
-	
-		  if(File_e){
-    fs.readFile(File_e.path, function(err, data){
-      if(err)
-        return res.send("读取文件失败");
-      var base64Data = data.toString('base64');
-      theFilee = new AV.File(File_e.name, {base64: base64Data});
-      theFilee.save().then(function(theFilee){
-       // res.send("上传成功！");
-      });
-    });
-  }else
-    res.send("请选择一个文件。");
- //file.save();
- //point.set("Graphic",theFile);
  
- 
- //point.set("GraphicC",theFilec);
- //point.set("GraphicD",theFiled);
- //point.set("GraphicE",theFilee);
+
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
