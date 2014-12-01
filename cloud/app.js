@@ -80,6 +80,7 @@ app.post('/edit',function(req,res){
  point.set("routenum",req.body.routenumber);
  point.set("Editor",usr);
  point.set("Links",req.body.links);
+ point.set("Address",req.body.pointaddress);
 
  var data=fs.readFileSync(File_a.path);
  var base64Data = data.toString('base64');
