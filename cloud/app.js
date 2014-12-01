@@ -48,6 +48,10 @@ app.get('/edit',function(req, res){
     res.render('edit',{ message:''});
 });
 
+app.post('/success',function(req, res){
+    res.render('edit',{ message:''});
+});
+
 app.post('/', function(req, res) {
     AV.User.logIn(req.body.username, req.body.password).then(function() {
       //登录成功，avosExpressCookieSession会自动将登录用户信息存储到cookie
@@ -118,8 +122,8 @@ app.post('/edit',function(req,res){
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
-       res.send('创建成功!' + point.id);
-	//res.render('/edit',{message:'创建成功!'});
+      // res.send('创建成功!' + point.id);
+	res.render('success',{message:'创建成功!'});
   },
   error: function(point, error) {
     // Execute any logic that should take place if the save fails.
