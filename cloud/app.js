@@ -2,13 +2,7 @@
 var express = require('express');
 var app = express();
 var fs = require('fs');
-var Point = AV.Object.extend("UserPoint");
-var point = new Point();
-var theFile;
-var theFileb;
-var theFilec;
-var theFiled;
-var theFilee;
+
 
 
 
@@ -74,34 +68,33 @@ app.post('/edit',function(req,res){
  var File_c = req.files.exampleC;
  var File_d = req.files.exampleD;
  var File_e = req.files.exampleE;
+ var Point = AV.Object.extend("UserPoint");
+ var point = new Point();
  var usr;
- usr=AV.User.current();
- //var file = new AV.File('test.txt', new Buffer('hello world'));;
+ usr = AV.User.current();
+
  
  point.set("name",req.body.pointname);
  point.set("Introduction", req.body.introduction);
  point.set("routename",req.body.routename);
  point.set("routenum",req.body.routenumber);
  point.set("Editor",usr);
- //point.set("Creator",AV.User.current());
+
+ var data=fs.readFileSync(File_a.path);
  
-
-
-  if(File_a){
-    fs.readFile(File_a.path, function(err, data){
-      if(err)
-        return res.send("读取文件失败");
+ //fs.readFile(File_a.path, function(err, data){
+      //if(err)
+      //  return res.send("读取文件失败");
       var base64Data = data.toString('base64');
-      theFile = new AV.File(File_a.name, {base64: base64Data});
-	  
-      theFile.save();
+      var theFile = new AV.File(File_a.name, {base64: base64Data});
+	  theFile.save();
+	 
 	 
 	 
 	
 	  
-    });
-  }else
-    res.send("请选择一个文件。");
+    
+  
 	point.set("GraphicA",theFile);
 	 	
   if(File_b){
@@ -124,7 +117,7 @@ app.post('/edit',function(req,res){
       var base64Data = data.toString('base64');
       theFilec = new AV.File(File_c.name, {base64: base64Data});
       theFilec.save().then(function(theFilec){
-       // res.send("上传成功！");
+      
       });
     });
   }else
