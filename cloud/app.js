@@ -79,6 +79,7 @@ app.post('/edit',function(req,res){
  point.set("routename",req.body.routename);
  point.set("routenum",req.body.routenumber);
  point.set("Editor",usr);
+ point.set("Links",req.body.links);
 
  var data=fs.readFileSync(File_a.path);
  var base64Data = data.toString('base64');
@@ -116,14 +117,14 @@ app.post('/edit',function(req,res){
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
-   // res.send('New object created with objectId: ' + point.id);
-	res.render('/edit',{message:'创建成功!'});
+       res.send('创建成功!' + point.id);
+	//res.render('/edit',{message:'创建成功!'});
   },
   error: function(point, error) {
     // Execute any logic that should take place if the save fails.
     // error is a AV.Error with an error code and description.
-   // res.send('Failed to create new object, with error code: ' + error.description);
-	res.render('/edit',{message:'创建失败'+error.description});
+      res.send('创建失败' + error.description);
+	//res.render('/edit',{message:'创建失败'+error.description});
   }});
 
 
