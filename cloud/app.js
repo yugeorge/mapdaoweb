@@ -5,6 +5,10 @@ var fs = require('fs');
 var Point = AV.Object.extend("UserPoint");
 var point = new Point();
 var theFile;
+var theFileb;
+var theFilec;
+var theFiled;
+var theFilee;
 
 
 
@@ -65,11 +69,11 @@ app.post('/', function(req, res) {
 });
 
 app.post('/edit',function(req,res){
- var iconFile = req.files.example;
- var File_b=req.files.exampleB;
- var File_c=req.files.exampleC;
- var File_d=req.files.exampleD;
- var File_e=req.files.exampleE;
+ var File_a = req.files.example;
+ var File_b = req.files.exampleB;
+ var File_c = req.files.exampleC;
+ var File_d = req.files.exampleD;
+ var File_e = req.files.exampleE;
  
  //var file = new AV.File('test.txt', new Buffer('hello world'));;
  
@@ -82,29 +86,29 @@ app.post('/edit',function(req,res){
  
 
 
-  if(iconFile){
-    fs.readFile(iconFile.path, function(err, data){
+  if(File_a){
+    fs.readFile(File_a.path, function(err, data){
       if(err)
         return res.send("读取文件失败");
       var base64Data = data.toString('base64');
-      theFile = new AV.File(iconFile.name, {base64: base64Data});
+      theFile = new AV.File(File_a.name, {base64: base64Data});
 	  
       theFile.save();
 	 
 	 
-	 // point.set("check","1234");
+	
 	  
     });
   }else
     res.send("请选择一个文件。");
 	
-	 point.set("Graphic",theFile);	
+	 	
   if(File_b){
     fs.readFile(File_b.path, function(err, data){
       if(err)
         return res.send("读取文件失败");
       var base64Data = data.toString('base64');
-      var theFileb = new AV.File(File_b.name, {base64: base64Data});
+      theFileb = new AV.File(File_b.name, {base64: base64Data});
       theFileb.save().then(function(theFileb){
         res.send("上传成功！");
       });
@@ -117,8 +121,34 @@ app.post('/edit',function(req,res){
       if(err)
         return res.send("读取文件失败");
       var base64Data = data.toString('base64');
-      var theFilec = new AV.File(File_c.name, {base64: base64Data});
+      theFilec = new AV.File(File_c.name, {base64: base64Data});
       theFilec.save().then(function(theFilec){
+        res.send("上传成功！");
+      });
+    });
+  }else
+    res.send("请选择一个文件。");
+	
+	  if(File_d){
+    fs.readFile(File_d.path, function(err, data){
+      if(err)
+        return res.send("读取文件失败");
+      var base64Data = data.toString('base64');
+      theFiled = new AV.File(File_d.name, {base64: base64Data});
+      theFiled.save().then(function(theFiled){
+        res.send("上传成功！");
+      });
+    });
+  }else
+    res.send("请选择一个文件。");
+	
+		  if(File_e){
+    fs.readFile(File_e.path, function(err, data){
+      if(err)
+        return res.send("读取文件失败");
+      var base64Data = data.toString('base64');
+      theFilee = new AV.File(File_e.name, {base64: base64Data});
+      theFilee.save().then(function(theFiled){
         res.send("上传成功！");
       });
     });
@@ -126,6 +156,11 @@ app.post('/edit',function(req,res){
     res.send("请选择一个文件。");
  //file.save();
  //point.set("Graphic",theFile);
+ point.set("GraphicA",theFile);
+ point.set("GraphicB",theFileb);
+ point.set("GraphicC",theFilec);
+ point.set("GraphicD",theFiled);
+ point.set("GraphicE",theFilee);
  point.save(null, {
   success: function(point) {
     // Execute any logic that should take place after the object is saved.
