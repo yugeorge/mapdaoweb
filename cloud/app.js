@@ -28,6 +28,26 @@ app.get('/register',function(req, res){
    res.render('register',{ message:''});
 });
 
+app.get('/resetpwd',function(req, res){
+   res.render('resetpwd',{ message:''});
+});
+
+app.post('/resetpwd',function(req, res){
+  AV.User.requestPasswordReset(req.body.register_email, {
+  success: function() {
+    // Password reset request was sent successfully
+	res.render('resetpwd',{ message:'重置密码邮件已发送，请登录邮箱验证'});
+  },
+  error: function(error) {
+    // Show the error message somewhere
+	res.render('resetpwd',{ message:"Error: " + error.code + " " + error.message});
+   
+  }
+});
+
+
+});
+
 app.post('/register',function(req, res){
    var user=new AV.User();
    user.set("username",req.body.username);
